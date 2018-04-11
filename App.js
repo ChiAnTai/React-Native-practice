@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux'
 
 
 import PlaceList from './src/components/PlaceList/PlaceList'
@@ -7,7 +8,7 @@ import PlaceInput from './src/components/PlaceInput/PlaceInput'
 import PlaceDetail from './src/components/PlaceDetail/PlaceDetail'
 // import placeImage from './src/assets/14.jpeg'
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     places: [],
     selectedPlace: null
@@ -80,3 +81,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
 });
+
+const mapStateToProps = state => {
+  return{
+    places: state.places.places
+  }
+};
+export default connect()(App);
